@@ -15,9 +15,10 @@ import { useRouter } from "next/router";
 
 export interface IHeaderProps {
     placeholder: string;
+    isFromHomePage: boolean;
 }
 
-export function Header({ placeholder }: IHeaderProps) {
+export function Header({ placeholder, isFromHomePage = false }: IHeaderProps) {
     const [searchInput, setSearchInput] = useState("");
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -68,18 +69,22 @@ export function Header({ placeholder }: IHeaderProps) {
             </div>
 
             {/* Middle - Search */}
-            <div className="flex items-center border-2 rounded-full py-2 md:shadow-sm">
-                <input
-                    type="text"
-                    name=""
-                    id=""
-                    value={searchInput}
-                    onChange={(event) => setSearchInput(event.target.value)}
-                    className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-500 placeholder-gray-400"
-                    placeholder={placeholder || "Start your search"}
-                />
-                <MagnifyingGlassIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer mx-auto md:mx-2" />
-            </div>
+            {!isFromHomePage ? (
+                <div className="flex items-center border-2 rounded-full py-2 md:shadow-sm">
+                    <input
+                        type="text"
+                        name=""
+                        id=""
+                        value={searchInput}
+                        onChange={(event) => setSearchInput(event.target.value)}
+                        className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-500 placeholder-gray-400"
+                        placeholder={placeholder || "Start your search"}
+                    />
+                    <MagnifyingGlassIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer mx-auto md:mx-2" />
+                </div>
+            ) : (
+                <div className="flex items-center  rounded-full py-2 md:shadow-sm"></div>
+            )}
 
             {/* Right */}
             <div className="flex items-center space-x-4 justify-end text-gray-500">

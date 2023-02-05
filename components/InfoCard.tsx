@@ -51,11 +51,11 @@ export function InfoCard(props: IInfoCardProps) {
 
             <div className="flex flex-col flex-grow pl-5">
                 <div className="flex  justify-between ">
-                    <p>{props.location}</p>
+                    <p>{props.title}</p>
                     <HeartIcon className="h-7 cursor-pointer" />
                 </div>
 
-                <h4 className="text-xl font-bold">{props.title}</h4>
+                <h4 className="text-xl font-bold">{props.location}</h4>
 
                 <div className="border-b w-10 pt-2" />
 

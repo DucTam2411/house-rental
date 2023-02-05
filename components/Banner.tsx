@@ -101,7 +101,7 @@ export function Banner(props: IBannerProps) {
                         value={searchInput}
                         onChange={(event) => setSearchInput(event.target.value)}
                         className="flex-grow pl-5 bg-transparent outline-none text-sm text-white placeholder-gray-400"
-                        placeholder={"Start your search"}
+                        placeholder={"Place you want to go"}
                     />
 
                     <MagnifyingGlassIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer mx-auto md:mx-2" />

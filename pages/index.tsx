@@ -25,7 +25,7 @@ const Home = ({ exploreData, cardData }: Props) => {
             </Head>
 
             {/* Header */}
-            <Header placeholder={""} />
+            <Header placeholder={""} isFromHomePage={true} />
 
             {/* Banner */}
             <Banner />
