@@ -6,13 +6,17 @@ export interface ISearchPageProps {
     searchResults: any;
 }
 
-import { faker } from "@faker-js/faker";
+import { faker } from "@faker-js/faker/locale/vi";
 import { InfoCard } from "../components/InfoCard";
 import { NavMap } from "../components/Map";
 
 export default function Search({ searchResults }: ISearchPageProps) {
     const router = useRouter();
     const { endDate, startDate, location, noOfGuest } = router.query;
+    console.log(
+        "🚀 TAM ~ file: search.tsx:16 ~ Search ~  router.query",
+        router.query
+    );
 
     const formattedStartDate = format(
         new Date(startDate as string),
@@ -58,6 +62,8 @@ export default function Search({ searchResults }: ISearchPageProps) {
                             <InfoCard
                                 {...item}
                                 key={item.price}
+                                realPrice={item.realPrice}
+                                currency={item.currency}
                                 routerParams={router.query}
                             />
                         ))}
@@ -88,7 +94,7 @@ export async function getServerSideProps() {
     };
 }
 
-const getRandomLocationPosition = () => {
+export const getRandomLocationPosition = () => {
     const description = `${faker.datatype.number({
         max: 8,
         min: 1,
@@ -109,18 +115,22 @@ const getRandomLocationPosition = () => {
     `;
 
     const currentSymbol = "€";
-
+    const price = Math.round(Number(faker.commerce.price(10, 20)));
     return {
         description: description,
-        img: faker.image.city(),
+        img: faker.image.city(640, 380, true),
         lat: Number(faker.address.latitude()),
+        realPrice: price,
         long: Number(faker.address.longitude()),
-        price: currentSymbol + " " + faker.commerce.price(10, 20) + " / night",
-        star: Math.random() * 5,
+        price: currentSymbol + " " + price + " / night",
+        star: (Math.random() * 5).toPrecision(2),
+        km: (Math.random() * 5 + 2).toPrecision(2),
+        review: Math.round(Math.random() * 100),
+        currency: currentSymbol,
         location: faker.address.streetAddress(),
         title: faker.address.cityName(),
         total: currentSymbol + " " + faker.commerce.price(10, 20),
-        float: Number(faker.datatype.float({ min: -0.2, max: 2 })),
+        float: Number(faker.datatype.float({ min: -0.02, max: 0.01 })),
         id: faker.datatype.uuid(),
     };
 };

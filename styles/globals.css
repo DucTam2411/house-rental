@@ -7,3 +7,22 @@
         @apply px-4 py-2 border  rounded-full cursor-pointer  hover:shadow-lg active:scale-95 active:bg-gray-100  transition transform duration-100 ease-out;
     }
 }
+
+.datepicker-in-search {
+    border-radius: 14px;
+    border: 10px white;
+
+    overflow: hidden;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input.guest::-webkit-outer-spin-button,
+input.guest::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input.guest[type="number"] {
+    -moz-appearance: textfield;
+}

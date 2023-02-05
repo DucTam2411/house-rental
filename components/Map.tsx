@@ -7,10 +7,13 @@ export interface IMapProps {
     searchResults: any;
 }
 export function NavMap(props: IMapProps) {
+    const HCM_coordinates = {
+        latitude: 10.8106,
+        longitude: 106.7091,
+    };
     const [viewport, setViewport] = React.useState({
-        latitude: 37,
-        longitude: -122,
-        zoom: 8,
+        ...HCM_coordinates,
+        zoom: 12,
         width: "100%",
         height: "100%",
     });
@@ -37,8 +40,10 @@ export function NavMap(props: IMapProps) {
                     return (
                         <div key={res.long}>
                             <Marker
-                                longitude={-122 + res.float}
-                                latitude={37 + res.float}
+                                longitude={
+                                    HCM_coordinates.longitude + res.float
+                                }
+                                latitude={HCM_coordinates.latitude + res.float}
                                 onClick={() => setSelectedLocation(res.id)}
                             >
                                 <p
@@ -51,13 +56,15 @@ export function NavMap(props: IMapProps) {
                             </Marker>
 
                             <Popup
-                                longitude={-122 + res.float}
-                                latitude={37 + res.float}
+                                longitude={
+                                    HCM_coordinates.longitude + res.float
+                                }
+                                latitude={HCM_coordinates.latitude + res.float}
                                 closeOnClick={true}
-                                offset={[-10, -15]}
+                                // offset={[-10, -15]}
                                 onClose={() => setSelectedLocation("")}
                             >
-                                {res.title}
+                                {res.location}
                             </Popup>
                         </div>
                     );

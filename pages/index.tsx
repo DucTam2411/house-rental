@@ -1,7 +1,10 @@
+import { faker } from "@faker-js/faker";
 import Head from "next/head";
 import { Banner } from "../components/Banner";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { LargeCityCard } from "../components/Home/LargeCityCard";
+import { SmallPlaceItem } from "../components/Home/SmallPlaceItem";
 import { LargeCard } from "../components/LargeCard";
 import { IMediumCardProps, MediumCard } from "../components/MediumCard";
 import { ISmallCardProps, SmallCard } from "../components/SmallCard";
@@ -28,17 +31,17 @@ const Home = ({ exploreData, cardData }: Props) => {
             <Banner />
 
             <main className="max-w-7xl mx-auto px-8 sm:px-16">
+                {/* Explore the world */}
                 <section className="pt-6">
                     <h2 className="text-4xl font-semibold pb-5">
                         Explore Nearby
                     </h2>
 
-                    {/* Pull some data from a server - API endpoint */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {exploreData &&
-                            exploreData.map((item: ISmallCardProps) => (
-                                <SmallCard key={item.img} {...item} />
-                            ))}
+                    <div className=" flex  justify-between">
+                        <SmallPlaceItem />
+                        <SmallPlaceItem />
+                        <SmallPlaceItem />
+                        <SmallPlaceItem />
                     </div>
                 </section>
 
@@ -51,6 +54,22 @@ const Home = ({ exploreData, cardData }: Props) => {
                         {cardData &&
                             cardData.map((item: IMediumCardProps) => (
                                 <MediumCard key={item.img} {...item} />
+                            ))}
+                    </div>
+                </section>
+
+                <section>
+                    <h2 className="text-4xl font-semibold pt-8 pb-3 ">
+                        Trending cities
+                    </h2>
+                    <p className="mb-4 text-gray-500">
+                        The most searched for cities{" "}
+                    </p>
+
+                    <div className="flex space-x-10 overflow-auto scrollbar-hide p-3 -ml-3">
+                        {cardData &&
+                            cardData.map((item: IMediumCardProps) => (
+                                <LargeCityCard key={item.img} {...item} />
                             ))}
                     </div>
                 </section>

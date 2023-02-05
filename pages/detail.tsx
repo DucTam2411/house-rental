@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { faker } from "@faker-js/faker/locale/vi";
 import {
     ArrowTopRightOnSquareIcon,
     HeartIcon,
@@ -19,7 +19,7 @@ import {
     StarIcon,
     UserIcon,
 } from "@heroicons/react/24/solid";
-import { format, isValid } from "date-fns";
+import { format, isValid, parse } from "date-fns";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -33,11 +33,19 @@ import { NavMap } from "../components/Map";
 import { ReviewBar } from "../components/ReviewBar";
 import { ReviewItem } from "../components/ReviewItem";
 import photos from "../data/photo";
+import { getDiffInDay } from "../utils/utils";
 export interface IDetailProps {}
 
 export default function Detail(props: IDetailProps) {
     const router = useRouter();
-    const { location, city, price = 100 } = router.query;
+    const {
+        location,
+        city,
+        price = 100,
+        realPrice = 20,
+        currency = "$",
+        review,
+    } = router.query;
     console.log(
         "🚀 TAM ~ file: detail.tsx:33 ~ Detail ~ router.query",
         router.query
@@ -103,7 +111,7 @@ export default function Detail(props: IDetailProps) {
 
                             <div className="flex">
                                 <h5 className="underline underline-offset-[3px]">
-                                    7 reviews
+                                    {review} reviews
                                 </h5>
                             </div>
                             <span className="ml-2 mr-2">·</span>
@@ -306,10 +314,11 @@ export default function Detail(props: IDetailProps) {
                             {/*  7 night  */}
                             <div className="my-5 border-t pt-5  align-middle">
                                 <p className="text-3xl font-medium ">
-                                    7 nights in New York
+                                    {getDiffInDay(endDate, startDate)} nights in{" "}
+                                    {location}
                                 </p>
                                 <p className="text-slate-500">
-                                    {`${location} | ${range} | ${noOfGuest} guests`}
+                                    {`${range} | ${noOfGuest} guests`}
                                 </p>
                                 <DateRange
                                     months={2}
@@ -339,7 +348,7 @@ export default function Detail(props: IDetailProps) {
                         <div className="ml-5 border p-6 shadow-lg rounded">
                             <div className="flex items-center justify-between">
                                 {/* Title and price */}
-                                <p className="text-2xl">{price}＄/ night</p>
+                                <p className="text-2xl">{price}</p>
                                 <div>
                                     <div className="flex ">
                                         <div className="flex ">
@@ -350,25 +359,64 @@ export default function Detail(props: IDetailProps) {
 
                                         <div className="flex">
                                             <h5 className="underline underline-offset-[3px]">
-                                                7 reviews
+                                                {review} reviews
                                             </h5>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div className="mt-4 border rounded grid grid-cols-2">
                                 <div className="p-3 border-r">
                                     <p className="font-bold">CHECK IN</p>
-                                    <p className="text-gray-500">
-                                        {format(startDate, "dd/mm/yyyy")}
-                                    </p>
+                                    <input
+                                        className="text-gray-500 w-28"
+                                        value={format(startDate, "dd/mm/yyyy")}
+                                        onBlur={(value) => {
+                                            const isDateValid = isValid(
+                                                parse(
+                                                    value.currentTarget.value,
+                                                    "dd/mm/yyyy",
+                                                    new Date()
+                                                )
+                                            );
+                                            if (isDateValid) {
+                                                setStartDate(
+                                                    parse(
+                                                        value.currentTarget
+                                                            .value,
+                                                        "dd/mm/yyyy",
+                                                        new Date()
+                                                    )
+                                                );
+                                            }
+                                        }}
+                                    />
                                 </div>
                                 <div className="p-3">
                                     <p className="font-bold">CHECK IN</p>
-                                    <p className="text-gray-500">
-                                        {format(startDate, "dd/mm/yyyy")}
-                                    </p>
+                                    <input
+                                        className="text-gray-500 w-28"
+                                        value={format(endDate, "dd/mm/yyyy")}
+                                        onChange={(value) => {
+                                            const isDateValid = isValid(
+                                                parse(
+                                                    value.currentTarget.value,
+                                                    "dd/mm/yyyy",
+                                                    new Date()
+                                                )
+                                            );
+                                            if (isDateValid) {
+                                                setEndDate(
+                                                    parse(
+                                                        value.currentTarget
+                                                            .value,
+                                                        "dd/mm/yyyy",
+                                                        new Date()
+                                                    )
+                                                );
+                                            }
+                                        }}
+                                    />
                                 </div>
                                 <div className=" p-3 col-span-2 border-t">
                                     <p className="font-bold">GUESTS</p>
@@ -391,12 +439,89 @@ export default function Detail(props: IDetailProps) {
                                     </select>
                                 </div>
                             </div>
-
-                            <button className="bg-red-500 w-full mt-5 p-2 rounded text-white transition duration-200 ease-out hover:opacity-25 active:bg-white">
-                                <a href="https://checkoutpage.co/c/plan/house">
-                                    Reserve
-                                </a>
+                            <button
+                                className="bg-red-500 w-full mt-5 p-2 rounded text-white transition duration-200 ease-out hover:opacity-25 active:bg-white"
+                                onClick={() =>
+                                    router.push(
+                                        "https://checkoutpage.co/c/plan/house"
+                                    )
+                                }
+                            >
+                                Reserve
                             </button>
+                            <div className="w-full mt-2">
+                                <p className="text-center text-gray-500">
+                                    You won't be charge yet
+                                </p>
+                            </div>
+                            {/* Pricing part */}
+                            <div className="mt-5 text-xl">
+                                <div className="flex  justify-between">
+                                    <div>
+                                        {currency}
+                                        {realPrice} x{" "}
+                                        {getDiffInDay(endDate, startDate)}{" "}
+                                        nights
+                                    </div>
+                                    <div>
+                                        {currency}
+                                        {getDiffInDay(endDate, startDate) *
+                                            Number(realPrice)}{" "}
+                                    </div>
+                                </div>
+
+                                {/* Weekly discount */}
+                                <div className="flex mt-3 justify-between">
+                                    <div>Weekly discount</div>
+                                    <div>
+                                        <span className="text-teal-500">
+                                            – {currency}26
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Cleaning  fee */}
+                                <div className="flex mt-3 justify-between">
+                                    <div>Cleaning fee</div>
+                                    <div>
+                                        <span> {currency}37</span>
+                                    </div>
+                                </div>
+
+                                {/* Weekly discount */}
+                                <div className="flex mt-3 justify-between">
+                                    <div>Cleaning fee</div>
+                                    <div>
+                                        <span> {currency}62</span>
+                                    </div>
+                                </div>
+
+                                {/* Occupancy taxes and fees */}
+                                <div className="flex mt-3 justify-between">
+                                    <div>Occupancy taxes and fees</div>
+                                    <div>
+                                        <span> {currency}24</span>
+                                    </div>
+                                </div>
+
+                                {/* Occupancy taxes and fees */}
+                                <div className="flex mt-5 pt-5 justify-between border-t">
+                                    <div>Total</div>
+                                    <div>
+                                        <span>
+                                            {Number(realPrice) *
+                                                getDiffInDay(
+                                                    endDate,
+                                                    startDate
+                                                ) -
+                                                26 +
+                                                37 +
+                                                62 +
+                                                24}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -408,7 +533,7 @@ export default function Detail(props: IDetailProps) {
                     <div className="flex items-center">
                         <StarIcon className="h-6 mt-[-5px] mr-2 text-red-400" />
                         <p className="text-3xl font-medium ">
-                            5.0 · 37 reviews
+                            5.0 · {review} reviews
                         </p>
                     </div>
 
@@ -463,7 +588,7 @@ export default function Detail(props: IDetailProps) {
                         </div>
 
                         <button className="border border-black px-4 py-2 rounded hover:bg-black hover:text-white transition duration-200 ease-out">
-                            Show all 37 comments
+                            Show all {review} comments
                         </button>
                     </div>
 

@@ -13,6 +13,8 @@ export interface IInfoCardProps {
     location: string;
     total: string;
 
+    realPrice: number;
+    currency: string;
     routerParams: any;
 }
 
@@ -26,9 +28,12 @@ export function InfoCard(props: IInfoCardProps) {
                 router.push({
                     pathname: "/detail",
                     query: {
+                        ...props.routerParams,
+                        locationSearch: props.location,
                         location: props.location,
                         city: props.title,
-                        ...props.routerParams,
+                        realPrice: props.realPrice,
+                        currency: props.currency,
                         price: props.price,
                     },
                 });
@@ -61,7 +66,7 @@ export function InfoCard(props: IInfoCardProps) {
                 <div className="flex justify-between items-end pt-5">
                     <p className="flex items-center">
                         <StarIcon className="h-5 text-red-400 mr-1" />
-                        {props.star.toPrecision(3)}
+                        {props.star}
                     </p>
 
                     <div>

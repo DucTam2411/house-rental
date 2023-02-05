@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { faker } from "@faker-js/faker/locale/vi";
 import Image from "next/image";
 import * as React from "react";
 
