@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 
 export interface IHeaderProps {
     placeholder: string;
-    isFromHomePage: boolean;
+    isFromHomePage?: boolean;
 }
 
 export function Header({ placeholder, isFromHomePage = false }: IHeaderProps) {
