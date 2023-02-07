@@ -64,8 +64,8 @@ export function InfoCard(props: IInfoCardProps) {
                 </p>
 
                 <div className="flex justify-between items-end pt-5">
-                    <p className="flex items-center">
-                        <StarIcon className="h-5 text-red-400 mr-1" />
+                    <p className="flex items-center text-xl">
+                        <StarIcon className="h-5 text-[#4794FF] mr-1" />
                         {props.star}
                     </p>
 

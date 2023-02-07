@@ -25,7 +25,7 @@ export function SmallPlaceItem(props: ISmallPlaceItemProps) {
 
     return (
         <div
-            className="border rounded-2xl w-64 p-3 cursor-pointer hover:shadow-xl transition duration-300 ease-out"
+            className="border rounded-2xl w-64 p-3 cursor-pointer hover:shadow-xl hover:scale-105  transition duration-300 ease-out"
             onClick={() => {
                 router.push({
                     pathname: "/detail",
@@ -47,7 +47,7 @@ export function SmallPlaceItem(props: ISmallPlaceItemProps) {
             {/* Star and review */}
             <div className="flex mt-5">
                 <div className="flex ">
-                    <StarIcon className="h-5 text-rose-500 mr-2" />
+                    <StarIcon className="h-5 text-[#4794FF] mr-2" />
                     <h5>{place.star}</h5>
                 </div>
                 <span className="ml-2 mr-2">·</span>

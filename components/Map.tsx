@@ -61,7 +61,7 @@ export function NavMap(props: IMapProps) {
                                 }
                                 latitude={HCM_coordinates.latitude + res.float}
                                 closeOnClick={true}
-                                // offset={[-10, -15]}
+                                offset={[-10, -15]}
                                 onClose={() => setSelectedLocation("")}
                             >
                                 {res.location}

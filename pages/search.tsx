@@ -36,7 +36,7 @@ export default function Search({ searchResults }: ISearchPageProps) {
                 <section className="flex-grow  pt-14 px-6 ">
                     <p>
                         300+ stays - {range} - for{" "}
-                        <span className="text-red-400 font-semibold">
+                        <span className="text-[#4794FF] font-semibold">
                             {noOfGuest}
                         </span>{" "}
                         number of guest
@@ -44,7 +44,7 @@ export default function Search({ searchResults }: ISearchPageProps) {
 
                     <h1 className="text-3xl font-semibold mt-2 mb-6">
                         Stay in{" "}
-                        <span className="text-red-400 font-semibold">
+                        <span className="text-[#4794FF] font-semibold">
                             {location}
                         </span>
                     </h1>

@@ -104,7 +104,7 @@ export default function Detail(props: IDetailProps) {
                         {/* Title, host */}
                         <div className="flex mt-5">
                             <div className="flex ">
-                                <StarIcon className="h-5 text-rose-500 mr-2" />
+                                <StarIcon className="h-5 text-[#4794FF] mr-2" />
                                 <h5>4.8</h5>
                             </div>
                             <span className="ml-2 mr-2">·</span>
@@ -117,7 +117,7 @@ export default function Detail(props: IDetailProps) {
                             <span className="ml-2 mr-2">·</span>
 
                             <div className="flex ">
-                                <UserIcon className="h-5 text-rose-500 mr-2" />
+                                <UserIcon className="h-5 text-[#4794FF] mr-2" />
                                 <h5>Superhost</h5>
                             </div>
                             <span className="ml-2 mr-2">·</span>
@@ -324,7 +324,7 @@ export default function Detail(props: IDetailProps) {
                                     months={2}
                                     showDateDisplay={false}
                                     direction="horizontal"
-                                    rangeColors={["#fd5b60e8"]}
+                                    rangeColors={["#4794FF"]}
                                     color="#000"
                                     ranges={[selectionRange]}
                                     onChange={handleSelect}
@@ -352,7 +352,7 @@ export default function Detail(props: IDetailProps) {
                                 <div>
                                     <div className="flex ">
                                         <div className="flex ">
-                                            <StarIcon className="h-5 text-rose-500 mr-2" />
+                                            <StarIcon className="h-5 text-[#4794FF] mr-2" />
                                             <h5>4.8</h5>
                                         </div>
                                         <span className="ml-2 mr-2">·</span>
@@ -440,7 +440,7 @@ export default function Detail(props: IDetailProps) {
                                 </div>
                             </div>
                             <button
-                                className="bg-red-500 w-full mt-5 p-2 rounded text-white transition duration-200 ease-out hover:opacity-25 active:bg-white"
+                                className="bg-[#4794FF] w-full mt-5 p-2 rounded text-white transition duration-200 ease-out hover:opacity-25 active:bg-white"
                                 onClick={() =>
                                     router.push(
                                         "https://checkoutpage.co/c/plan/house"
@@ -474,7 +474,7 @@ export default function Detail(props: IDetailProps) {
                                 <div className="flex mt-3 justify-between">
                                     <div>Weekly discount</div>
                                     <div>
-                                        <span className="text-teal-500">
+                                        <span className="text-[#4794FF]">
                                             – {currency}26
                                         </span>
                                     </div>
@@ -531,7 +531,7 @@ export default function Detail(props: IDetailProps) {
                 {/* Section */}
                 <div className="mx-[120px]  my-5  pt-5  align-middle">
                     <div className="flex items-center">
-                        <StarIcon className="h-6 mt-[-5px] mr-2 text-red-400" />
+                        <StarIcon className="h-6 mt-[-5px] mr-2 text-[#4794FF]" />
                         <p className="text-3xl font-medium ">
                             5.0 · {review} reviews
                         </p>
@@ -635,20 +635,20 @@ export default function Detail(props: IDetailProps) {
                 {/* Icon part */}
                 <div className="flex mt-5">
                     <div className="flex ">
-                        <StarIcon className="h-5 text-rose-500 mr-2" />
+                        <StarIcon className="h-5 text-[#4794FF] mr-2" />
                         <h5>4.8</h5>
                     </div>
 
                     <span className="ml-2 mr-2">·</span>
 
                     <div className="flex ">
-                        <UserIcon className="h-5 text-rose-500 mr-2" />
+                        <UserIcon className="h-5 text-[#4794FF] mr-2" />
                         <h5>Superhost</h5>
                     </div>
                     <span className="ml-2 mr-2">·</span>
 
                     <div className="flex ">
-                        <ShieldCheckIcon className="h-5 text-rose-500 mr-2" />
+                        <ShieldCheckIcon className="h-5 text-[#4794FF] mr-2" />
                         <h5>Verified</h5>
                     </div>
                 </div>

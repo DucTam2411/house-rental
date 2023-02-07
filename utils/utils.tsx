@@ -7,5 +7,6 @@ const getDiffInDay = (endDate: Date, startDate: Date) => {
     }
     return diff;
 };
+const BRAND_COLOR = "#4794FF";
 
-export { getDiffInDay };
+export { getDiffInDay, BRAND_COLOR };

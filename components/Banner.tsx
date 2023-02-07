@@ -78,18 +78,20 @@ export function Banner(props: IBannerProps) {
                             );
                             setNoOfGuest(Number(num));
                         }}
-                        className="flex-grow pl-5 bg-transparent outline-none text-sm text-white placeholder-gray-400 guest"
+                        className="  flex-grow pl-5 bg-transparent outline-none text-md text-white placeholder-gray-400 guest"
                         placeholder={"Number of guest"}
                         list="citynames"
                     />
-                    {noOfGuest !== 0 && <p className="text-white">Guests</p>}
+                    {noOfGuest !== 0 && (
+                        <p className="text-md text-white">Guests</p>
+                    )}
 
                     <datalist id="citynames">
                         {noOfGuestArr.map((item) => (
                             <option value={item} />
                         ))}
                     </datalist>
-                    <UsersIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer mx-auto md:mx-2" />
+                    <UsersIcon className="hidden md:inline-flex h-8 bg-[#4794FF] text-white rounded-full p-2 cursor-pointer mx-auto md:mx-2" />
                 </div>
 
                 {/* Middle - Search */}
@@ -100,11 +102,11 @@ export function Banner(props: IBannerProps) {
                         id=""
                         value={searchInput}
                         onChange={(event) => setSearchInput(event.target.value)}
-                        className="flex-grow pl-5 bg-transparent outline-none text-sm text-white placeholder-gray-400"
+                        className="flex-grow  pl-5 bg-transparent outline-none text-md text-white placeholder-gray-400"
                         placeholder={"Place you want to go"}
                     />
 
-                    <MagnifyingGlassIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer mx-auto md:mx-2" />
+                    <MagnifyingGlassIcon className="hidden md:inline-flex h-8 bg-[#4794FF] text-white rounded-full p-2 cursor-pointer mx-auto md:mx-2" />
                 </div>
             </div>
 
