@@ -5,6 +5,7 @@ import {
     Bars3Icon,
     UserCircleIcon,
     UserIcon,
+    ShoppingBagIcon,
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
@@ -12,6 +13,7 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from "next/router";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 export interface IHeaderProps {
     placeholder: string;
@@ -60,12 +62,13 @@ export function Header({ placeholder, isFromHomePage = false }: IHeaderProps) {
                 className="relative flex items-center h-10 cursor-pointer my-auto"
             >
                 <Image
-                    src="https://links.papareact.com/qd3"
+                    src="/branch-icon.png"
                     alt={""}
                     layout="fill"
                     objectFit="contain"
                     objectPosition="left"
                 />
+                <p className="pl-12  text-3xl">rentalist</p>
             </div>
 
             {/* Middle - Search */}
@@ -90,6 +93,21 @@ export function Header({ placeholder, isFromHomePage = false }: IHeaderProps) {
             <div className="flex items-center space-x-4 justify-end text-gray-500">
                 <p className="hidden md:inline cursor-pointer">Become a host</p>
                 <GlobeAsiaAustraliaIcon className="h-6" />
+
+                <ShoppingCartIcon
+                    className="h-6 button p-0 border-0 rounded-none"
+                    onClick={() => {
+                        router.push({
+                            pathname: "/favorite",
+                            query: {
+                                location: searchInput,
+                                startDate: startDate.toISOString(),
+                                endDate: endDate.toISOString(),
+                                noOfGuest,
+                            },
+                        });
+                    }}
+                />
 
                 <div className="flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer">
                     <Bars3Icon className="h-6" />

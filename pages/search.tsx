@@ -129,7 +129,7 @@ export const getRandomLocationPosition = () => {
         currency: currentSymbol,
         location: faker.address.streetAddress(),
         title: faker.address.cityName(),
-        total: currentSymbol + " " + faker.commerce.price(10, 20),
+        total: currentSymbol + " " + faker.commerce.price(100, 200, 0),
         float: Number(faker.datatype.float({ min: -0.02, max: 0.01 })),
         id: faker.datatype.uuid(),
     };

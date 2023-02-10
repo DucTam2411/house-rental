@@ -22,7 +22,7 @@ export interface IInfoCardProps {
     favorite?: boolean;
 }
 
-export function InfoCard(props: IInfoCardProps) {
+export function FavoriteCard(props: IInfoCardProps) {
     const router = useRouter();
 
     return (
@@ -44,7 +44,7 @@ export function InfoCard(props: IInfoCardProps) {
                     });
                 }}
             >
-                <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
+                <div className="relative ml-10 h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
                     <Image
                         src={props.img}
                         alt={""}
@@ -54,7 +54,7 @@ export function InfoCard(props: IInfoCardProps) {
                     />
                 </div>
 
-                <div className="flex flex-col flex-grow pl-5">
+                <div className="flex flex-col flex-grow pl-5 mr-10">
                     <div className="flex  justify-between ">
                         <p>{props.title}</p>
                         {props.favorite && props.favorite == true ? (

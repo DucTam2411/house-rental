@@ -116,7 +116,7 @@ export function Banner(props: IBannerProps) {
                         className=" datepicker-in-search"
                         ranges={[selectionRange]}
                         minDate={new Date()}
-                        rangeColors={["#fd5b60e8"]}
+                        rangeColors={["#4794FF"]}
                         onChange={handleSelect}
                     />
 
@@ -129,7 +129,7 @@ export function Banner(props: IBannerProps) {
                         </button>
                         <button
                             onClick={search}
-                            className="flex-grow bg-red-400  text-white"
+                            className="flex-grow bg-[#4794FF]  text-white"
                         >
                             Search
                         </button>
