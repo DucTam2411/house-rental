@@ -128,7 +128,7 @@ export const getRandomLocationPosition = () => {
         km: (Math.random() * 5 + 2).toPrecision(2),
         review: Math.round(Math.random() * 100),
         currency: currentSymbol,
-        location: FakerEN.lorem.sentence(2),
+        location: FakerEN.lorem.sentence(2).replaceAll(".", ""),
         title: faker.address.cityName() + "," + faker.address.streetName(),
         total: currentSymbol + " " + faker.commerce.price(100, 200, 0),
         float: Number(faker.datatype.float({ min: -0.02, max: 0.01 })),
