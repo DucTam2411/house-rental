@@ -25,6 +25,8 @@ export interface IInfoCardProps {
 export function InfoCard(props: IInfoCardProps) {
     const router = useRouter();
 
+    const [favorite, setFavorite] = React.useState(false);
+
     return (
         <>
             <div
@@ -55,9 +57,18 @@ export function InfoCard(props: IInfoCardProps) {
                 </div>
 
                 <div className="flex flex-col flex-grow pl-5">
-                    <div className="flex  justify-between ">
+                    <div
+                        className="flex  justify-between "
+                        onClick={(e) => {
+                            e.preventDefault();
+
+                            setFavorite(!favorite);
+
+                            e.preventDefault();
+                        }}
+                    >
                         <p>{props.title}</p>
-                        {props.favorite && props.favorite == true ? (
+                        {favorite && favorite == true ? (
                             <HeartIconSolid
                                 className="h-7 cursor-pointer "
                                 color="#4794FF"
@@ -77,7 +88,7 @@ export function InfoCard(props: IInfoCardProps) {
 
                     <div className="flex justify-between items-end pt-5">
                         <p className="flex items-center text-xl">
-                            <StarIcon className="h-5 text-[#4794FF] mr-1" />
+                            <StarIcon className="h-5 text-orange-500 mr-1" />
                             {props.star}
                         </p>
 

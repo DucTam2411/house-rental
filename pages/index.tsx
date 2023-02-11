@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import Head from "next/head";
 import { Banner } from "../components/Banner";
 import { Footer } from "../components/Footer";
@@ -7,7 +6,7 @@ import { LargeCityCard } from "../components/Home/LargeCityCard";
 import { SmallPlaceItem } from "../components/Home/SmallPlaceItem";
 import { LargeCard } from "../components/LargeCard";
 import { IMediumCardProps, MediumCard } from "../components/MediumCard";
-import { ISmallCardProps, SmallCard } from "../components/SmallCard";
+import { ISmallCardProps } from "../components/SmallCard";
 
 interface Props {
     exploreData: ISmallCardProps[];
@@ -15,8 +14,6 @@ interface Props {
 }
 
 const Home = ({ exploreData, cardData }: Props) => {
-    console.log("🚀 TAM ~ file: index.tsx:17 ~ Home ~ cardData", cardData);
-    console.log("🚀 TAM ~ file: index.tsx:10 ~ exploreData", exploreData);
     return (
         <div className="">
             <Head>

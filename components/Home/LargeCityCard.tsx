@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker/locale/vi";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export interface ILargeCityCardProps {
@@ -17,8 +18,23 @@ export function LargeCityCard({ img }: ILargeCityCardProps) {
         return <></>;
     }
 
+    const router = useRouter();
+
     return (
-        <div className="cursor-pointer hover:scale-105 transform transition duration-300 ease-out ">
+        <div
+            className="cursor-pointer hover:scale-105 transform transition duration-300 ease-out "
+            onClick={() => {
+                router.push({
+                    pathname: "/search",
+                    query: {
+                        location: "City " + title,
+                        startDate: new Date().toISOString(),
+                        endDate: new Date().toISOString(),
+                        noOfGuest: 1,
+                    },
+                });
+            }}
+        >
             <div className="relative h-96 w-60">
                 <Image
                     src={img}

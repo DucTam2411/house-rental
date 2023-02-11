@@ -47,7 +47,7 @@ export function SmallPlaceItem(props: ISmallPlaceItemProps) {
             {/* Star and review */}
             <div className="flex mt-5">
                 <div className="flex ">
-                    <StarIcon className="h-5 text-[#4794FF] mr-2" />
+                    <StarIcon className="h-5 text-orange-500 mr-2" />
                     <h5>{place.star}</h5>
                 </div>
                 <span className="ml-2 mr-2">·</span>

@@ -13,6 +13,8 @@ import {
     CameraIcon,
     FilmIcon,
 } from "@heroicons/react/24/outline";
+import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
+
 import {
     ArrowsPointingOutIcon,
     ShieldCheckIcon,
@@ -92,6 +94,8 @@ export default function Detail(props: IDetailProps) {
     const formattedEndDate = format(new Date(endDate), "dd MMMM ");
     const range = `${formattedStartDate} -  ${formattedEndDate}`;
 
+    const [favorite, setFavorite] = React.useState(false);
+
     return (
         <div>
             <Header placeholder={""} />
@@ -104,7 +108,7 @@ export default function Detail(props: IDetailProps) {
                         {/* Title, host */}
                         <div className="flex mt-5">
                             <div className="flex ">
-                                <StarIcon className="h-5 text-[#4794FF] mr-2" />
+                                <StarIcon className="h-5 text-orange-500 mr-2" />
                                 <h5>4.8</h5>
                             </div>
                             <span className="ml-2 mr-2">·</span>
@@ -117,7 +121,7 @@ export default function Detail(props: IDetailProps) {
                             <span className="ml-2 mr-2">·</span>
 
                             <div className="flex ">
-                                <UserIcon className="h-5 text-[#4794FF] mr-2" />
+                                <UserIcon className="h-5 text-black mr-2" />
                                 <h5>Superhost</h5>
                             </div>
                             <span className="ml-2 mr-2">·</span>
@@ -135,8 +139,24 @@ export default function Detail(props: IDetailProps) {
                                 <h5 className="font-medium">Share</h5>
                             </div>
 
-                            <div className="flex mr-5 ">
-                                <HeartIcon className="h-5 font-medium mr-2" />
+                            <div
+                                className="flex mr-5 "
+                                onClick={(e) => {
+                                    e.preventDefault();
+
+                                    setFavorite(!favorite);
+
+                                    e.preventDefault();
+                                }}
+                            >
+                                {favorite && favorite == true ? (
+                                    <HeartIconSolid
+                                        className="h-5 font-medium mt-[0.5px] cursor-pointer mr-1 "
+                                        color="#4794FF"
+                                    />
+                                ) : (
+                                    <HeartIcon className="h-5 font-medium mt-[0.5px] mr-1 cursor-pointer" />
+                                )}
                                 <h5 className="font-medium">Save</h5>
                             </div>
                         </div>
@@ -352,7 +372,7 @@ export default function Detail(props: IDetailProps) {
                                 <div>
                                     <div className="flex ">
                                         <div className="flex ">
-                                            <StarIcon className="h-5 text-[#4794FF] mr-2" />
+                                            <StarIcon className="h-5 text-orange-500 mr-2" />
                                             <h5>4.8</h5>
                                         </div>
                                         <span className="ml-2 mr-2">·</span>
@@ -553,7 +573,7 @@ export default function Detail(props: IDetailProps) {
 
                                 <div className=" flex items-center justify-between my-4 mr-40">
                                     <p className="text-lg">Check-in</p>
-                                    <ReviewBar value={32} score="4.7" />
+                                    <ReviewBar value={28} score="4.7" />
                                 </div>
 
                                 <div className="mt-10">

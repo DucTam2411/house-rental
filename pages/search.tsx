@@ -114,7 +114,7 @@ export const getRandomLocationPosition = () => {
     Washing machine · Wifi · Kitchen · Playground
     `;
 
-    const currentSymbol = "€";
+    const currentSymbol = "$";
     const price = Math.round(Number(faker.commerce.price(10, 20)));
     return {
         description: description,
@@ -122,7 +122,7 @@ export const getRandomLocationPosition = () => {
         lat: Number(faker.address.latitude()),
         realPrice: price,
         long: Number(faker.address.longitude()),
-        price: currentSymbol + " " + price + " / night",
+        price: currentSymbol + price + " / night",
         star: (Math.random() * 5).toPrecision(2),
         km: (Math.random() * 5 + 2).toPrecision(2),
         review: Math.round(Math.random() * 100),
