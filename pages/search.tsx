@@ -8,6 +8,7 @@ export interface ISearchPageProps {
 
 import { faker } from "@faker-js/faker/locale/vi";
 import { InfoCard } from "../components/InfoCard";
+import { faker as FakerEN } from "@faker-js/faker";
 import { NavMap } from "../components/Map";
 
 export default function Search({ searchResults }: ISearchPageProps) {
@@ -127,8 +128,8 @@ export const getRandomLocationPosition = () => {
         km: (Math.random() * 5 + 2).toPrecision(2),
         review: Math.round(Math.random() * 100),
         currency: currentSymbol,
-        location: faker.address.streetAddress(),
-        title: faker.address.cityName(),
+        location: FakerEN.lorem.sentence(2),
+        title: faker.address.cityName() + "," + faker.address.streetName(),
         total: currentSymbol + " " + faker.commerce.price(100, 200, 0),
         float: Number(faker.datatype.float({ min: -0.02, max: 0.01 })),
         id: faker.datatype.uuid(),
